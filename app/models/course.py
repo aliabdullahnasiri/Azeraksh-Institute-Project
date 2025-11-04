@@ -34,6 +34,9 @@ class Course(db.Model):
     enrollments = db.relationship(
         "Enrollment", back_populates="course", cascade="all, delete, delete-orphan"
     )
+    files = db.relationship(
+        "CourseFile", back_populates="course", cascade="all, delete, delete-orphan"
+    )
 
     def __repr__(self):
         return f"<Course {self.course_title} ID={self.course_id}>"
@@ -129,6 +132,7 @@ class Course(db.Model):
             "end_date": self.display_end_date,
             "start_time": self.display_start_time,
             "end_time": self.display_end_time,
+            "files": [f.file.to_dict() for f in self.files],
             "created_at": self.display_created_at,
             "updated_at": self.display_updated_at,
         }
