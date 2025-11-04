@@ -49,6 +49,33 @@
             </div>
           </div>
         </div>
+        {% if course.files %}
+        <div class="row gx-0 mb-2">
+          <div class="">
+            <div class="card-header pb-0">
+              <h5>Files</h5>
+            </div>
+
+            <div class="card-body d-flex flex-wrap p-2 px-0 pt-0">
+              {% for f in course.files %}
+              <li
+                data-url="{{ f.file.file_url }}"
+                class="card w-md-15 height-100 p-2 ms-2 my-2 position-relative cursor-pointer file-card"
+              >
+                <div class="body h-100 d-grid align-items-end">
+                  <div class="d-grid">
+                    <span class="file-ext">{{ f.file.extension }}</span
+                    ><span class="text-xs file-size"
+                      >{{ f.file.human_size }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
       </div>
 
       <div class="col-md-4">
@@ -124,7 +151,7 @@
     </div>
     <div class="row gx-3 my-1">
       <div class="col-md-12">
-        {% with e = course.enrollments %}
+        {% with e = course.enrollments %} {% if e %}
         <div class="row gx-0 mb-2 mt-5">
           <div class="card">
             <div
@@ -221,7 +248,7 @@
             </div>
           </div>
         </div>
-        {% endwith %}
+        {% endif %} {% endwith %}
       </div>
     </div>
   </div>
