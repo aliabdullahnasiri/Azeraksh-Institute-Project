@@ -104,7 +104,7 @@ def fetch_teacher(teacher_id: int) -> Response:
 
 @bp.get("/fetch/row/teacher/<int:teacher_id>")
 @login_required
-def fetch_teacher_row(teacher_id):
+def fetch_teacher_row(teacher_id) -> Response:
     teacher: Union[Teacher, None] = Teacher.query.filter_by(
         teacher_id=teacher_id
     ).first()
