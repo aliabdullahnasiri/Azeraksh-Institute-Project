@@ -1,0 +1,138 @@
+{% with form = update_teacher_form %}
+<form
+  method="POST"
+  action="{{ url_for('api.update_teacher') }}"
+  enctype="multipart/form-data"
+  data-get="{{ url_for('api.fetch_teacher', teacher_id=-1) }}"
+>
+  {{ form.hidden_tag() }}
+
+  <div class="row mb-5 mt-4">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-center">
+        <div class="avatar position-relative drop-zone">
+          <img
+            src="{{ DEFAULT_AVATAR_URL }}"
+            alt="profile_image"
+            class="rounded-pill shadow-sm shadow-xl w-100 cursor-pointer output"
+            data-role="image"
+          />
+          {{ form.avatar(class="form-control d-none") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="my-3">
+        <div class="input-group input-group-outline my-3">
+          {{ form.first_name.label(class="form-label") }} {{
+          form.first_name(class="form-control") }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="my-3">
+        <div class="input-group input-group-outline my-3">
+          {{ form.middle_name.label(class="form-label") }} {{
+          form.middle_name(class="form-control is-invalid") }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="my-3">
+        <div class="input-group input-group-outline">
+          {{ form.last_name.label(class="form-label") }} {{
+          form.last_name(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.email.label(class="form-label") }} {{
+          form.email(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="multi-value-input card">
+          <div class="input-group input-group-outline">
+            {{ form.phones.label(class="form-label") }} {{
+            form.phones(class="form-control") }}
+          </div>
+          <div class="values d-flex flex-wrap"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="px-2 py-0 my-0">
+          {{ form.birthday.label(class="form-label") }}
+        </div>
+        <div class="input-group input-group-outline">
+          {{ form.birthday(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.salary.label(class="form-label") }} {{
+          form.salary(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="mx-2">{{ form.resume.label(class="form-label") }}</div>
+      <div class="card drop-zone position-relative">
+        <div
+          class="d-grid align-item-center align-content-center justify-content-center w-100 h-100 py-5"
+        >
+          <div class="text-center">
+            <i class="material-symbols-rounded opacity-5 fs-1">upload</i>
+          </div>
+          <span
+            ><strong
+              class="open-default-file-input-modal cursor-pointer"
+              data-id="{{ form.resume.id }}"
+              >Choose a file</strong
+            >
+            or drag it here</span
+          >
+        </div>
+
+        <div class="list-section pt-0 pb-2 px-2">
+          <hr class="dark horizontal mb-3 mt-0" />
+          <div class="list-title fs-5 m-2">Uploaded Files</div>
+          <ul class="list-unstyled d-flex flex-wrap mt-4 mx-2"></ul>
+        </div>
+        {{ form.resume(class="form-control d-none") }}
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    {{ form.submit(class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0") }}
+  </div>
+</form>
+{% endwith %}

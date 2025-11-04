@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %} - Application{% endblock %}</title>
+    <link
+      href="{{ url_for('static', filename='init/css/style.css') }}"
+      rel="stylesheet"
+    />
+    <!-- CSS Files -->
+    <link
+      id="pagestyle"
+      href="{{ url_for('static', filename='admin/assets/css/material-dashboard.css') }}"
+      rel="stylesheet"
+    />
+
+    <link
+      href="{{ url_for('static', filename='admin/assets/css/material-icons.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+    <script src="{{ url_for('static', filename='init/js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/js/material-dashboard.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/js/sweetalert.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/js/form.js') }}" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<div class="col-lg-4 col-md-6 mt-4 mb-4">
+  <div class="card shadow-sm border-0 rounded-3">
+    <div class="card-body">
+      <h6 class="mb-0 text-muted">Payments Overview</h6>
+      <p class="text-sm text-muted">Last 12 Months</p>
+
+      <div class="pe-2">
+        <div class="chart">
+          <canvas
+            id="monthly-payments-chart"
+            class="chart-canvas"
+            height="170"
+            data-get="{{ url_for('api.monthly_payments') }}"
+          ></canvas>
+        </div>
+      </div>
+
+      <hr class="dark horizontal" />
+
+      <div class="d-flex">
+        <i class="material-symbols-rounded text-sm my-auto me-1"
+          >arrow_upward</i
+        >
+        <p class="mb-0 text-sm">
+          <span
+            class="text-{{ Student.monthly_growth_clr() }} font-weight-bolder"
+            >{{ Payment.display_monthly_growth() }} </span
+          >than last month
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+
+<!-- Block Content Start -->
+{% block content %}
+
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    {% include "main/components/sections/about-us.html" %}
+  </div>
+</div>
+
+<div class="container-fluid bg-image" style="margin: 90px 0">
+  <div class="container">
+    {% include "main/components/sections/feature.html" %}
+  </div>
+</div>
+
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    {% include "main/components/sections/contact.html" %}
+  </div>
+</div>
+
+{% endblock %}
+<!-- Block Content End -->

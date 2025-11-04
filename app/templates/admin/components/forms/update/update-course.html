@@ -1,0 +1,106 @@
+{% with form = update_course_form %}
+<form
+  method="POST"
+  action="{{ url_for('api.update_course') }}"
+  data-get="{{ url_for('api.fetch_course', course_id=-1) }}"
+>
+  {{ form.hidden_tag() }}
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.course_title.label(class="form-label") }} {{
+          form.course_title(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.course_description(class="form-control", rows="5",
+          spellcheck="false", placeholder="Course Description") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.monthly_fee.label(class="form-label") }} {{
+          form.monthly_fee(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.teacher_id.label(class="form-label") }} {{
+          form.teacher_id(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="px-2 py-0 my-0">
+          {{ form.start_date.label(class="form-label") }}
+        </div>
+        <div class="input-group input-group-outline">
+          {{ form.start_date(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="px-2 py-0 my-0">
+          {{ form.end_date.label(class="form-label") }}
+        </div>
+        <div class="input-group input-group-outline">
+          {{ form.end_date(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="my-2">
+        <div class="px-2 py-0 my-0">
+          {{ form.start_time.label(class="form-label") }}
+        </div>
+        <div class="input-group input-group-outline">
+          {{ form.start_time(class="form-control") }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="my-2">
+        <div class="px-2 py-0 my-0">
+          {{ form.end_time.label(class="form-label") }}
+        </div>
+        <div class="input-group input-group-outline">
+          {{ form.end_time(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    {{ form.submit(class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0") }}
+  </div>
+</form>
+{% endwith %}

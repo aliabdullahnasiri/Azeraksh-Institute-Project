@@ -1,0 +1,148 @@
+<form
+  class="form-control"
+  action="{{ url_for('api.update_setting') }}"
+  method="POST"
+>
+  {{ form.hidden_tag() }}
+
+  <div class="row gx-5 px-3">
+    <div class="col-md-4">
+      <div class="row">
+        <h6 class="m-0 mt-3 mt-md-0">General</h6>
+      </div>
+
+      <hr class="horizontal light my-2 mb-3" />
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.site_name.label(class="form-label") }} {{
+              form.site_name(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="px-2 mt-1 my-0">
+            {{ form.site_description.label(class="form-label") }}
+          </div>
+          <div class="mb-2 mt-0">
+            <div class="input-group input-group-outline">
+              {{ form.site_description(class="form-control", rows="10",
+              spellcheck="false", placeholder="Job Description") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.primary_phone.label(class="form-label") }} {{
+              form.primary_phone(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.email.label(class="form-label") }} {{
+              form.email(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.location.label(class="form-label") }} {{
+              form.location(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="row">
+        <h6 class="m-0 mt-3 mt-md-0">Social Links</h6>
+      </div>
+
+      <hr class="horizontal light my-2 mb-3" />
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.facebook.label(class="form-label") }} {{
+              form.facebook(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.twitter.label(class="form-label") }} {{
+              form.twitter(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.instagram.label(class="form-label") }} {{
+              form.instagram(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.linkedin.label(class="form-label") }} {{
+              form.linkedin(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="my-2">
+            <div class="input-group input-group-outline is-filled">
+              {{ form.youtube.label(class="form-label") }} {{
+              form.youtube(class="form-control") }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <h6 class="m-0 mt-3 mt-md-0">Site Logo</h6>
+      </div>
+      <hr class="horizontal light my-2 mb-3" />
+    </div>
+  </div>
+
+  <div class="row mx-2">
+    <div class="text-center w-auto px-2">
+      {{ form.submit(class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0") }}
+    </div>
+  </div>
+</form>

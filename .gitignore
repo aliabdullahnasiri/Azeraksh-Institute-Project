@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.venv/
+venv/
+.env
+*.sqlite3
+*.db
+
+
+# Flask-Migrate
+migrations/versions/__pycache__/
+
+# Flask
+app/static/
+
+# IDE
+.vscode/
+.idea/

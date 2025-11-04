@@ -1,0 +1,29 @@
+<div class="col-lg-4 col-md-6 mt-4 mb-4">
+  <div class="card">
+    <div class="card-body">
+      <h6 class="mb-0">Weeekly Website Views</h6>
+      <p class="text-sm">Last 7 Days</p>
+      <div class="pe-2">
+        <div class="chart">
+          <canvas
+            id="weekly-views"
+            class="chart-canvas"
+            height="170"
+            data-get="{{ url_for('api.weekly_views') }}"
+          ></canvas>
+        </div>
+      </div>
+      <hr class="dark horizontal" />
+      <div class="d-flex">
+        <i class="material-symbols-rounded text-sm my-auto me-1"
+          >arrow_upward</i
+        >
+        <p class="mb-0 text-sm">
+          <span class="text-{{ View.weekly_growth_clr() }} font-weight-bolder"
+            >{{ View.display_weekly_growth() }} </span
+          >than last week
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

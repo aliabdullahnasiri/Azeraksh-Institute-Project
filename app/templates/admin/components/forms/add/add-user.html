@@ -1,0 +1,108 @@
+{% with form = add_user_form %}
+<form
+  method="POST"
+  action="{{ url_for('api.add_user') }}"
+  enctype="multipart/form-data"
+>
+  {{ form.hidden_tag() }}
+
+  <div class="row mb-5 mt-4">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-center">
+        <div class="avatar position-relative drop-zone">
+          <img
+            src="{{ DEFAULT_AVATAR_URL }}"
+            alt="profile_image"
+            class="rounded-pill shadow-sm shadow-xl w-100 cursor-pointer output"
+            data-role="image"
+          />
+          {{ form.avatar(class="form-control d-none") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.first_name.label(class="form-label") }} {{
+          form.first_name(class="form-control") }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.middle_name.label(class="form-label") }} {{
+          form.middle_name(class="form-control is-invalid") }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.last_name.label(class="form-label") }} {{
+          form.last_name(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.user_name.label(class="form-label") }} {{
+          form.user_name(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.password.label(class="form-label") }} {{
+          form.password(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.email.label(class="form-label") }} {{
+          form.email(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="px-2 py-0 my-0">
+          {{ form.birthday.label(class="form-label") }}
+        </div>
+        <div class="input-group input-group-outline">
+          {{ form.birthday(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <div class="col-md-12">
+      <div class="text-center">
+        {{ form.submit(class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0") }}
+      </div>
+    </div>
+  </div>
+</form>
+{% endwith %}

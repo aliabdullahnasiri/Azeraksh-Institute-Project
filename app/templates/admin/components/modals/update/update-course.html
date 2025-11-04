@@ -1,0 +1,27 @@
+<div
+  class="modal fade"
+  id="EditCourseModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="EditCourseModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card card-plain">
+          <div class="card-header pb-0 text-left">
+            <h5 data-modal-title>Update Course Information</h5>
+            <p class="mb-0" data-modal-description>
+              Modify the details of this course. After saving, the updated
+              information will be stored in the database.
+            </p>
+          </div>
+          <div class="card-body">
+            {% include "admin/components/forms/update/update-course.html" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,229 @@
+<div class="card card-plain">
+  <div class="card-header">
+    <div class="row align-items-center">
+      <div class="col-8 my-auto">
+        <div class="h-100">
+          <h4>{{ job.job_title }}</h4>
+          <p class="mb-0 font-weight-normal text-sm">
+            {{ job.job_description }}
+          </p>
+        </div>
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row gx-2">
+      <div class="col-lg-8">
+        <div class="row mb-2">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header mb-0 pb-0">
+                <h5>Job Information</h5>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-body mt-0">
+                <ul class="list-group">
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Job ID:</strong> &nbsp; {{ job.display_job_id }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Salary Range:</strong> &nbsp; {{
+                    job.display_salary_range }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Average Salary:</strong> &nbsp; {{
+                    job.display_average_salary }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Highest Salary:</strong> &nbsp; {{
+                    job.display_highest_salary }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Lowest Salary:</strong> &nbsp; {{
+                    job.display_lowest_salary }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Created At:</strong> &nbsp; {{
+                    job.display_created_at }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Updated At:</strong> &nbsp; {{
+                    job.display_updated_at }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="row mb-2">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header p-2 ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Minimum Salary</p>
+                    <h4 class="mb-0">{{ job.display_min_salary }}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">weekend</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2">
+                <span class="text-sm">Lowest salary in this job.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header p-2 ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Maximum Salary</p>
+                    <h4 class="mb-0">{{ job.display_max_salary }}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">weekend</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2">
+                <span class="text-sm">Highest salary in this job.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header p-2 ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Employees</p>
+                    <h4 class="mb-0">{{ job.employees.__len__() }}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">people</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2">
+                <span class="text-sm">Active staff count</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row gx-3 my-1">
+    <div class="col-md-12">
+      {% with employees = job.employees %}
+      <div class="row gx-0 mb-2 mt-5">
+        <div class="card">
+          <div
+            class="bg-gradient-dark card-header mt-n4 mx-3 position-relative z-index-2 shadow-sm rounded-3 py-4"
+          >
+            <h5 class="mb-0 mx-2">Employees</h5>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0 table-hover">
+                <thead>
+                  <tr>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      ID
+                    </th>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Employee
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Salary
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Hire Date
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Birthday
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for e in employees %}
+                  <tr>
+                    <td>
+                      <span class="text-sm">{{ e.employee_id }}</span>
+                    </td>
+                    <td>
+                      <div class="d-flex px-0 py-1">
+                        <div>
+                          <img
+                            src="{{ e.avatar_path }}"
+                            class="avatar avatar-sm me-3 border-radius-lg"
+                            alt="user1"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">
+                            {{ e.first_name }} {{ e.middle_name }} {{
+                            e.last_name }}
+                          </h6>
+                          <p class="text-xs text-secondary mb-0">
+                            {{ e.email }}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      {{ e.display_salary }}
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold"
+                        >{{ e.display_hire_date }}</span
+                      >
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold"
+                        >{{ e.display_birthday }}</span
+                      >
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endwith %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px">
+    <div class="position-relative h-100"></div>
+  </div>
+  <div class="col-lg-7">
+    <div class="section-title position-relative mb-4">
+      <h6
+        class="d-inline-block position-relative text-secondary text-uppercase pb-2"
+      >
+        About Us
+      </h6>
+      <h1 class="display-4">First Choice For Education</h1>
+    </div>
+    <p>
+      At <b>{{ PROJECT_TITLE }}</b>, we are dedicated to providing high-quality
+      education that empowers students and professionals to achieve their goals.
+      Our mission is to make learning accessible, engaging, and practical
+      through expertly designed courses and experienced instructors. Whether
+      you’re developing new skills, advancing your career, or exploring new
+      interests, we are committed to guiding you every step of the way with
+      excellence, innovation, and a passion for learning.
+    </p>
+    <div class="row pt-3 mx-0">
+      <div class="col-4 px-0">
+        <div class="bg-primary text-center p-4">
+          <h1 class="text-white" data-toggle="counter-up">
+            {{ Course.count() }}
+          </h1>
+          <h6 class="text-uppercase text-white">
+            Total<span class="d-block">Courses</span>
+          </h6>
+        </div>
+      </div>
+      <div class="col-4 px-0">
+        <div class="bg-secondary text-center p-4">
+          <h1 class="text-white" data-toggle="counter-up">
+            {{ Teacher.count() }}
+          </h1>
+          <h6 class="text-uppercase text-white">
+            Skilled<span class="d-block">Instructors</span>
+          </h6>
+        </div>
+      </div>
+      <div class="col-4 px-0">
+        <div class="bg-warning text-center p-4">
+          <h1 class="text-white" data-toggle="counter-up">
+            {{ Student.count() }}
+          </h1>
+          <h6 class="text-uppercase text-white">
+            Happy<span class="d-block">Students</span>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<div
+  class="page-header min-height-300 border-radius-xl mt-4"
+  style="
+    background-image: url(&quot;https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80&quot;);
+  "
+>
+  <span class="mask bg-gradient-dark opacity-6"></span>
+</div>
+<div class="card card-body mx-2 mx-md-2 mt-n6 profile-info">
+  <div class="row gx-4 mb-2">
+    <div class="col-auto">
+      <div class="avatar avatar-xl position-relative">
+        <img
+          src="{{ user.avatar_src }}"
+          alt="profile_image"
+          class="w-100 border-radius-lg shadow-sm"
+          data-id="avatar"
+        />
+      </div>
+    </div>
+    <div class="col-auto my-auto">
+      <div class="h-100">
+        <h5 class="mb-1" data-id="user_name">{{ user.user_name }}</h5>
+        <p class="mb-0 font-weight-normal text-sm" data-id="email">{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row">
+      <div class="col-12 col-xl-12 col-md-12">
+        <div class="card shadow-none border-0 h-100">
+          <div class="card-header pb-0 p-3">
+            <div class="row">
+              <div class="col-md-8 d-flex align-items-center position-relative">
+                <h6 class="mb-0">Profile Information</h6>
+              </div>
+              <div class="col-md-4 d-flex align-items-center position-relative">
+                <a
+                  href="javascript:;"
+                  data-bs-toggle="modal"
+                  data-bs-target="#EditUserModal"
+                  data-id="{{ user.user_id }}"
+                  class="position-absolute end-0 btn btn-info btn-sm px-2 py-2 btn-rounded"
+                >
+                  <i class="material-symbols-rounded fs-4"
+                    >person_edit</i
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                <strong class="text-dark">First Name:</strong>
+                &nbsp; <span data-id="first_name">{{ user.get_display_value('first_name') }}</span>
+              </li>
+
+              <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                <strong class="text-dark">Middle Name:</strong>
+                &nbsp; <span data-id="middle_name">{{ user.get_display_value('middle_name') }}</span>
+              </li>
+
+              <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                <strong class="text-dark">Last Name:</strong>
+                &nbsp; <span data-id="last_name">{{ user.get_display_value('last_name') }}</span>
+              </li>
+
+              <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                <strong class="text-dark">Email:</strong>
+                &nbsp; <span data-id="email">{{ user.get_display_value('email') }}</span>
+              </li>
+              <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                <strong class="text-dark">Birthday:</strong>
+                &nbsp; <span data-id="birthday">{{ user.get_display_value('display_birthday') }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block modal %}
+{{ super() }}
+{% include "admin/components/modals/update/update-user.html" %}
+{% endblock %}
+
+
+{% block script %}
+{{ super() }}
+<script src="{{ url_for('static', filename='admin/js/profile.js') }}"></script>
+{% endblock %}

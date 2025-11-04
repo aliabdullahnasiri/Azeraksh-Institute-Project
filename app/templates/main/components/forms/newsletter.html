@@ -1,0 +1,12 @@
+{% with form = Form.Newsletter %}
+<form action="{{ url_for('main.newsletter') }}" method="post">
+  {{ form.hidden_tag() }}
+  <div class="input-group">
+    {{ form.email(class="form-control border-light",
+    placeholder=form.email.label.text) }}
+    <div class="input-group-append">
+      {{ form.submit(class="btn btn-primary px-4") }}
+    </div>
+  </div>
+</form>
+{% endwith %}

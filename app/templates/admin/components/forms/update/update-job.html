@@ -1,0 +1,55 @@
+{% with form = update_job_form %}
+<form
+  method="POST"
+  action="{{ url_for('api.update_job') }}"
+  data-get="{{ url_for('api.fetch_job', job_id=-1) }}"
+>
+  {{ form.hidden_tag() }}
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.job_title.label(class="form-label") }} {{
+          form.job_title(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.job_description(class="form-control", rows="5",
+          spellcheck="false", placeholder="Job Description") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.min_salary.label(class="form-label") }} {{
+          form.min_salary(class="form-control") }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.max_salary.label(class="form-label") }} {{
+          form.max_salary(class="form-control is-invalid") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    {{ form.submit(class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0") }}
+  </div>
+</form>
+{% endwith %}

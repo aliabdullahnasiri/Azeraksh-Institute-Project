@@ -1,0 +1,112 @@
+{% extends "init/base.html" %}
+{% block title %}
+Setup
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2 class="mb-4 text-center">Setup</h2>
+      <form method="POST" action="{{ url_for('init.setup') }}" class="card p-4 shadow-sm" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.site_name.label(class="form-label") }} {{
+                form.site_name(class="form-control") }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.email.label(class="form-label") }} {{
+                form.email(class="form-control") }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="my-2">
+               <div class="mx-2">{{ form.site_description.label(class="form-label") }}</div>
+              <div class="input-group input-group-outline">
+                {{ form.site_description(class="form-control", rows=3) }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.location.label(class="form-label") }} {{
+                form.location(class="form-control") }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.primary_phone.label(class="form-label") }} {{
+                form.primary_phone(class="form-control") }}
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <h5 class="mt-4">Social Links</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.facebook.label(class="form-label") }} {{
+                form.facebook(class="form-control") }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.twitter.label(class="form-label") }} {{
+                form.twitter(class="form-control") }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.instagram.label(class="form-label") }} {{
+                form.instagram(class="form-control") }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.linkedin.label(class="form-label") }} {{
+                form.linkedin(class="form-control") }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="my-2">
+              <div class="input-group input-group-outline">
+                {{ form.youtube.label(class="form-label") }} {{
+                form.youtube(class="form-control") }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-end">{{ form.submit(class="btn btn-primary px-4") }}</div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

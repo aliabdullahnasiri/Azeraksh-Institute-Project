@@ -1,0 +1,48 @@
+{% with form = update_payment_form %}
+<form
+  method="POST"
+  action="{{ url_for('api.update_payment') }}"
+  data-get="{{ url_for('api.fetch_payment', payment_id=-1) }}"
+>
+  {{ form.hidden_tag() }}
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.enrollment_id.label(class="form-label") }} {{
+          form.enrollment_id(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.amount.label(class="form-label") }} {{
+          form.amount(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="px-2 py-0 my-0">
+          {{ form.month_for.label(class="form-label") }}
+        </div>
+        <div class="input-group input-group-outline">
+          {{ form.month_for(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    {{ form.submit(class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0") }}
+  </div>
+</form>
+{% endwith %}

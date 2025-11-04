@@ -1,0 +1,15 @@
+<table
+  class="table align-items-center mb-0 table-hover"
+  data-type="dynamic"
+  data-get-rows="{{ url_for('api.fetch_jobs_rows') }}"
+  data-get-row="{{ url_for('api.fetch_job_row', job_id='-1')}}"
+  data-update-row="{{ url_for('api.update_job')}}"
+  data-delete-row="{{ url_for('api.delete_job', job_id='-1')}}"
+  data-view-row="{{ url_for('admin.view_job', job_id=-1) }}"
+  data-add-row-modal-id="#AddJobModal"
+  data-edit-row-modal-id="#EditJobModal"
+  data-view-row-modal-id="#ViewJobModal"
+>
+  <thead></thead>
+  <tbody></tbody>
+</table>

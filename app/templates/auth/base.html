@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or 'App' }} – {{ project_title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='auth/css/style.css') }}"
+    />
+    <link
+      href="{{ url_for('static', filename='auth/css/boxicons.min.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="flash-container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, msg in messages %}
+      <div class="flash {{ category }}">{{ msg }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
+    <div class="container">{% block form %}{% endblock %}</div>
+
+    <script src="{{ url_for('static', filename='auth/js/script.js') }}"></script>
+  </body>
+</html>

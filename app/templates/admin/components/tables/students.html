@@ -1,0 +1,15 @@
+<table
+  class="table align-items-center mb-0 table-hover"
+  data-type="dynamic"
+  data-get-rows="{{ url_for('api.fetch_students_rows') }}"
+  data-get-row="{{ url_for('api.fetch_student_row', student_id='-1')}}"
+  data-update-row="{{ url_for('api.update_student')}}"
+  data-delete-row="{{ url_for('api.delete_student', student_id='-1')}}"
+  data-view-row="{{ url_for('admin.view_student', student_id=-1) }}"
+  data-add-row-modal-id="#AddStudentModal"
+  data-edit-row-modal-id="#EditStudentModal"
+  data-view-row-modal-id="#ViewStudentModal"
+>
+  <thead></thead>
+  <tbody></tbody>
+</table>

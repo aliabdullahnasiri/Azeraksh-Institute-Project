@@ -1,0 +1,170 @@
+<div class="card card-plain">
+  <div class="card-header">
+    <div class="row gx-4 mb-2 align-items-center">
+      <div class="col-auto">
+        <div class="avatar avatar-xl position-relative">
+          <img
+            src="{{ student.avatar_src }}"
+            alt="profile_image"
+            class="w-100 border-radius-lg shadow-sm"
+          />
+        </div>
+      </div>
+      <div class="col-auto my-auto">
+        <div class="h-100">
+          <h5 class="mb-1">{{ student.full_name }}</h5>
+          <p class="mb-0 font-weight-normal text-sm">{{ student.email }}</p>
+        </div>
+      </div>
+      <div class="col-auto ms-auto d-flex align-items-center"></div>
+    </div>
+  </div>
+  <div class="card-body py-0">
+    <div class="row gx-3">
+      <div class="col-md-8">
+        <div class="row gx-0 mb-2">
+          <div class="card">
+            <div class="card-header pb-0">
+              <h5>Student Information</h5>
+            </div>
+            <div class="card-body pt-0">
+              <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Student ID:</strong> &nbsp; {{student.student_id}}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>First Name:</strong> &nbsp; {{student.first_name}}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Middle Name:</strong> &nbsp; {{student.middle_name}}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Last Name:</strong> &nbsp; {{student.last_name}}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Email:</strong> &nbsp; {{student.email}}
+                </li>
+                {% if student.birthday %}
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Birthday:</strong> &nbsp; {{student.display_birthday}}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Age:</strong> &nbsp; {{student.age}}
+                </li>
+                {% endif %} {% if student.phones %}
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm d-flex">
+                  <strong>Mobile:</strong> &nbsp;
+                  <div class="d-grid">
+                    {% for phone in student.phones %}
+                    <span>{{ phone.phone_number }}</span>
+                    {% endfor %}
+                  </div>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {% if student.files %}
+        <div class="row gx-0 mb-2">
+          <div class="container">
+            <div class="card-header pb-0">
+              <h5>Files</h5>
+            </div>
+
+            <div class="card-body d-flex flex-wrap p-2 px-0 pt-0">
+              {% for f in student.files %}
+              <li
+                data-url="{{ f.file.file_url }}"
+                class="card w-md-15 height-100 p-2 ms-2 my-2 position-relative cursor-pointer file-card"
+              >
+                <div class="body h-100 d-grid align-items-end">
+                  <div class="d-grid">
+                    <span class="file-ext">{{ f.file.extension }}</span
+                    ><span class="text-xs file-size"
+                      >{{ f.file.human_size }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="col-md-4">
+        <div class="row gx-0 mb-2">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Enrollments</p>
+                    <h4 class="mb-0">{{ student.enrollments.__len__()}}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">book</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2 ps-3">
+                <div class="d-flex flex-wrap align-items-center">
+                  <span
+                    class="badge badge-sm bg-gradient-secondary text-xxs me-2"
+                  >
+                    Active
+                    <span class="text-sm"
+                      >{{ student.active_enrollments_count }}</span
+                    >
+                  </span>
+                  <span
+                    class="badge badge-sm bg-gradient-secondary text-xxs me-2"
+                  >
+                    Inactive
+                    <span class="text-sm"
+                      >{{ student.closed_enrollments_count }}</span
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row gx-0">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Files</p>
+                    <h4 class="mb-0">{{ student.files.__len__()}}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">files</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2 ps-3">
+                <span class="font-weight-bolder text-sm">Total Size: </span>
+
+                <span class="text-sm font-weight-normal"
+                  >{{ student.total_files_size }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer"></div>
+</div>

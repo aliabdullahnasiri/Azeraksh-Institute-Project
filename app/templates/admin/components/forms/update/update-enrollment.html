@@ -1,0 +1,54 @@
+{% with form = update_enrollment_form %}
+<form
+  method="POST"
+  action="{{ url_for('api.update_enrollment') }}"
+  data-get="{{ url_for('api.fetch_enrollment', enrollment_id=-1) }}"
+>
+  {{ form.hidden_tag() }}
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.student_id.label(class="form-label") }} {{
+          form.student_id(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.course_id.label(class="form-label") }} {{
+          form.course_id(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.discount_rate.label(class="form-label") }} {{
+          form.discount_rate(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-2">
+        <div class="input-group input-group-outline">
+          {{ form.status(class="form-control") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    {{ form.submit(class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0") }}
+  </div>
+</form>
+{% endwith %}

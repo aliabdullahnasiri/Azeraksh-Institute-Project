@@ -1,0 +1,15 @@
+<table
+  class="table align-items-center mb-0 table-hover"
+  data-type="dynamic"
+  data-get-rows="{{ url_for('api.fetch_courses_rows') }}"
+  data-get-row="{{ url_for('api.fetch_course_row', course_id='-1')}}"
+  data-update-row="{{ url_for('api.update_course')}}"
+  data-delete-row="{{ url_for('api.delete_course', course_id='-1')}}"
+  data-view-row="{{ url_for('admin.view_course', course_id=-1) }}"
+  data-add-row-modal-id="#AddCourseModal"
+  data-edit-row-modal-id="#EditCourseModal"
+  data-view-row-modal-id="#ViewCourseModal"
+>
+  <thead></thead>
+  <tbody></tbody>
+</table>

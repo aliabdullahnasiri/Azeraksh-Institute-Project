@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %}
+
+
+{% block content %}
+<div class="col-12">
+  <div
+    class="page-header min-height-300 border-radius-xl mt-4"
+    style="
+      background-image: url(&quot;https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80&quot;);
+    "
+  >
+    <span class="mask bg-gradient-dark opacity-6"></span>
+  </div>
+</div>
+
+<div class="card card-body mx-3 mx-md-3 mt-n6 ">
+  <div class="row gx-4 mb-3">
+    <div class="col-auto my-auto">
+      <div class="h-100">
+        <h3>Settings</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {% include "admin/components/forms/update/update-settings.html" %}
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+
+<script src="{{ url_for('static', filename='admin/js/settings.js') }}"></script>
+{% endblock %}

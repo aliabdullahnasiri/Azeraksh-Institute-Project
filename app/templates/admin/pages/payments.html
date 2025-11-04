@@ -1,0 +1,25 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+        <div class="align-items-center bg-gradient-dark border-radius-lg d-flex justify-content-between pb-3 pt-4 shadow-dark">
+          <h6 class="text-white text-capitalize ps-3 mx-3">{{title}} Table</h6>
+          <div class="align-items-center d-flex justify-content-center mx-4 table-control">
+          </div>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-2">
+        <div class="table-responsive p-0">
+          {% include "admin/components/tables/payments.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "admin/components/modals/add/add-payment.html" %}
+{% include "admin/components/modals/update/update-payment.html" %}
+{% endblock %}

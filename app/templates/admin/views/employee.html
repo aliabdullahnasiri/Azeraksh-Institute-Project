@@ -1,0 +1,123 @@
+<div class="card card-plain">
+  <div class="card-header">
+    <div class="row gx-4 mb-0">
+      <div class="col-auto">
+        <div class="avatar avatar-xl position-relative">
+          <img
+            src="{{ employee.avatar_src }}"
+            alt="profile_image"
+            class="w-100 border-radius-lg shadow-sm"
+          />
+        </div>
+      </div>
+      <div class="col-auto my-auto">
+        <div class="h-100">
+          <h5 class="mb-1">{{ employee.full_name }}</h5>
+          <p class="mb-0 font-weight-normal text-sm">{{ employee.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body py-0">
+    <div class="row gx-2">
+      <div class="col-md-8">
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header pb-0">
+                <h5 class="mb-2 mt-0">Employee Information</h5>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-body">
+                <ul class="list-group">
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Employee ID:</strong> &nbsp; {{ employee.employee_id
+                    }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Job ID:</strong> &nbsp; {{ employee.job_id }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>First Name:</strong> &nbsp; {{employee.first_name}}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Middle Name:</strong> &nbsp; {{ employee.middle_name
+                    }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Last Name:</strong> &nbsp; {{ employee.last_name }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Email:</strong> &nbsp; {{ employee.email }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Birthday:</strong> &nbsp; {{
+                    employee.display_birthday }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Age:</strong> &nbsp; {{ employee.age }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Address:</strong> &nbsp; {{ employee.display_address
+                    }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Salary:</strong> &nbsp; {{ employee.display_salary
+                    }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                    <strong>Hire Date:</strong> &nbsp; {{
+                    employee.display_hire_date }}
+                  </li>
+                  {% if employee.phones %}
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm d-flex">
+                    <strong>Mobile:</strong> &nbsp;
+                    <div class="d-grid">
+                      {% for phone in employee.phones %}
+                      <span>{{ phone.phone_number }}</span>
+                      {% endfor %}
+                    </div>
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2 ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Salary</p>
+                    <h4 class="mb-0">{{ employee.display_salary }}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">payment</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2 ps-3">
+                <p class="mb-0 text-sm">
+                  {% if employee.is_salary_gt_avg %}
+                  <span class="text-success font-weight-bolder">Greater</span>
+                  {% else %}
+                  <span class="text-danger font-weight-bolder">Less</span>
+                  {% endif %} than average salary
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer"></div>
+</div>

@@ -1,0 +1,193 @@
+<div class="card card-plain">
+  <div class="card-header">
+    <div class="row gx-4 mb-2">
+      <div class="col-auto">
+        <div class="avatar avatar-xl position-relative">
+          <img
+            src="{{ teacher.avatar_src }}"
+            alt="profile_image"
+            class="w-100 border-radius-lg shadow-sm"
+          />
+        </div>
+      </div>
+      <div class="col-auto my-auto">
+        <div class="h-100">
+          <h5 class="mb-1">{{ teacher.full_name }}</h5>
+          <p class="mb-0 font-weight-normal text-sm">{{ teacher.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body py-0">
+    <div class="row gx-2">
+      <div class="col-md-8">
+        <div class="row gx-0 mb-2">
+          <div class="card">
+            <div class="card-header pb-0">
+              <h5>Teacher Information</h5>
+            </div>
+            <div class="card-body pt-0">
+              <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Teacher ID:</strong> &nbsp; {{ teacher.teacher_id }}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>First Name:</strong> &nbsp; {{ teacher.first_name }}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Middle Name:</strong> &nbsp; {{ teacher.middle_name }}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Last Name:</strong> &nbsp; {{ teacher.last_name }}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Email:</strong> &nbsp; {{ teacher.email }}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Birthday:</strong> &nbsp; {{ teacher.display_birthday
+                  }}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Age:</strong> &nbsp; {{ teacher.age }}
+                </li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Salary:</strong> &nbsp; {{ teacher.display_salary }}
+                </li>
+                {% if teacher.phones %}
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm d-flex">
+                  <strong>Mobile:</strong> &nbsp;
+                  <div class="d-grid">
+                    {% for phone in teacher.phones %}
+                    <span>{{ phone.phone_number }}</span>
+                    {% endfor %}
+                  </div>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {% if teacher.files %}
+        <div class="row gx-0 mb-2">
+          <div class="">
+            <div class="card-header pb-0">
+              <h5>Files</h5>
+            </div>
+
+            <div class="card-body d-flex flex-wrap p-2 px-0 pt-0">
+              {% for f in teacher.files %}
+              <li
+                data-url="{{ f.file.file_url }}"
+                class="card w-md-15 height-100 p-2 ms-2 my-2 position-relative cursor-pointer file-card"
+              >
+                <div class="body h-100 d-grid align-items-end">
+                  <div class="d-grid">
+                    <span class="file-ext">{{ f.file.extension }}</span
+                    ><span class="text-xs file-size"
+                      >{{ f.file.human_size }}</span
+                    >
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="col-md-4">
+        {% if teacher.salary %}
+        <div class="row gx-0">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2 ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Salary</p>
+                    <h4 class="mb-0">{{ teacher.display_salary }}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">money</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2 ps-3">
+                <p class="mb-0 text-sm">
+                  {% if teacher.is_salary_gt_avg %}
+                  <span class="text-success font-weight-bolder">Greater</span>
+                  {% else %}
+                  <span class="text-danger font-weight-bolder">Less</span>
+                  {% endif %} than average salary
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %} {% if teacher.files%}
+        <div class="row gx-0 my-2">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2 ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Files</p>
+                    <h4 class="mb-0">{{ teacher.files.__len__()}}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">folder</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2 ps-3">
+                <span class="font-weight-bolder text-sm"
+                  >Total Files Size:
+                </span>
+
+                <span class="text-sm font-weight-normal"
+                  >{{ teacher.total_file_size }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <div class="row gx-0 my-2">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2 ps-3">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="text-sm mb-0 text-capitalize">Courses</p>
+                    <h4 class="mb-0">{{ teacher.courses.__len__()}}</h4>
+                  </div>
+                  <div
+                    class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+                  >
+                    <i class="material-symbols-rounded opacity-10">school</i>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-dark horizontal my-0 opacity-10" />
+              <div class="card-footer p-2 ps-3">
+                <span class="font-weight-bolder text-sm">Total Students: </span>
+
+                <span class="text-sm font-weight-normal"
+                  >{{ teacher.total_students_count }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer"></div>
+</div>

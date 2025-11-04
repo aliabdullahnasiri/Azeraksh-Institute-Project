@@ -1,0 +1,15 @@
+<table
+  class="table align-items-center mb-0 table-hover"
+  data-type="dynamic"
+  data-get-rows="{{ url_for('api.fetch_enrollments_rows') }}"
+  data-view-row="{{ url_for('admin.view_enrollment', enrollment_id=-1) }}"
+  data-get-row="{{ url_for('api.fetch_enrollment_row', enrollment_id='-1')}}"
+  data-update-row="{{ url_for('api.update_enrollment')}}"
+  data-delete-row="{{ url_for('api.delete_enrollment', enrollment_id='-1')}}"
+  data-add-row-modal-id="#AddEnrollmentModal"
+  data-edit-row-modal-id="#EditEnrollmentModal"
+  data-view-row-modal-id="#ViewEnrollmentModal"
+>
+  <thead></thead>
+  <tbody></tbody>
+</table>

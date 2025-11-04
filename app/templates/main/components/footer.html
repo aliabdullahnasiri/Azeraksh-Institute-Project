@@ -1,0 +1,42 @@
+{% block footer %}
+<div
+  class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5"
+>
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      <div class="col-md-6 mb-5">
+        <a href="index.html" class="navbar-brand">
+          <h2 class="text-uppercasse text-white display-5">
+            <i class="fa fa-book-reader mr-3"></i>{{ SITE_NAME }}
+          </h2>
+        </a>
+        <p class="m-0">{{ SITE_DESCRIPTION }}</p>
+      </div>
+      <div class="col-md-6 mb-5">
+        <div class="news-letter py-2">
+          <h3 class="text-white mb-4 mt-2">Newsletter</h3>
+          <div class="w-100">
+            {% include "main/components/forms/newsletter.html" %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 col-md-6 mb-5">
+        <h3 class="text-white mb-4">Get In Touch</h3>
+        <div class="d-flex flex-column justify-content-start">
+          <p><i class="fa fa-map-marker-alt mr-2"></i>{{ LOCATION }}</p>
+          <p><i class="fa fa-phone-alt mr-2"></i>{{ PRIMARY_PHONE }}</p>
+          <p><i class="fa fa-envelope mr-2"></i>{{ EMAIL }}</p>
+          <div class="d-flex justify-content-start mt-3">
+            {% include "main/components/links/social.html" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-8 col-md-6 mb-5">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

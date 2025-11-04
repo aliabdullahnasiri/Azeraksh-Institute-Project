@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>{{ title or 'App' }} · {{ PROJECT_TITLE }}</title>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="{{ url_for('static', filename='admin/assets/img/apple-icon.png') }}"
+    />
+
+    {% block style %}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin/css/style.css') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='admin/assets/img/favicon.png') }}"
+    />
+
+    <!-- CSS Files -->
+    <link
+      id="pagestyle"
+      href="{{ url_for('static', filename='admin/assets/css/material-dashboard.css') }}"
+      rel="stylesheet"
+    />
+
+    <link
+      href="{{ url_for('static', filename='admin/assets/css/material-icons.css') }}"
+      rel="stylesheet"
+    />
+
+    {% endblock %}
+
+    <script>
+      window.appData = {{ CTX | tojson | safe }};
+    </script>
+  </head>
+  <body class="g-sidenav-show bg-gray-100">
+    {% include "admin/components/aside.html" %}
+
+    <main
+      class="main-content position-relative max-height-vh-100 h-100 border-radius-lg"
+    >
+      <!-- Start Navbar -->
+      {% include "admin/components/nav.html" %}
+      <!-- End Navbar -->
+
+      <div class="container-fluid py-2">
+        {% block content %} {% endblock %} {% include
+        "admin/components/footer.html" %}
+      </div>
+    </main>
+
+    {% block modal %}{% endblock %} {% include
+    "admin/components/fixed-plugin.html" %} {% block script %}
+    <script src="{{ url_for('static', filename='admin/js/script.js') }}"></script>
+
+    <!--   Core JS Files   -->
+    <script src="{{ url_for('static', filename='admin/assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/js/plugins/chartjs.min.js') }}"></script>
+
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{{ url_for('static', filename='admin/assets/js/material-dashboard.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/js/sweetalert.js') }}"></script>
+    <script
+      type="module"
+      src="{{ url_for('static', filename='admin/js/form.js') }}"
+    ></script>
+    <script
+      type="module"
+      src="{{ url_for('static', filename='admin/js/table.js') }}"
+    ></script>
+    <script
+      type="module"
+      src="{{ url_for('static', filename='admin/js/modal.js') }}"
+    ></script>
+    {% endblock %}
+  </body>
+</html>

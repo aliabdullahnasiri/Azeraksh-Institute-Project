@@ -1,0 +1,17 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <h3 class="mb-4 h4 font-weight-bolder mx-4">Dashboard</h3>
+  </div>
+</div>
+{% include "admin/components/rows/dashboard-stats.html" %}
+{% include "admin/components/rows/dashboard-charts.html" %}
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+
+<script src="{{ url_for('static', filename='admin/js/dashboard-charts.js') }}"></script>
+{% endblock %}

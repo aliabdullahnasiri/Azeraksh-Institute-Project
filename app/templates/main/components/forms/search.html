@@ -1,0 +1,12 @@
+{% with form = Form.Search %}
+<form action="{{ url_for('main.search') }}">
+  {{ form.hidden_tag() }}
+  <div class="input-group search">
+    {{ form.keyword(class="form-control border-light",
+    placeholder=form.keyword.label.text) }}
+    <div class="input-group-append">
+      {{ form.submit(class="btn btn-secondary px-4 px-lg-5") }}
+    </div>
+  </div>
+</form>
+{% endwith %}

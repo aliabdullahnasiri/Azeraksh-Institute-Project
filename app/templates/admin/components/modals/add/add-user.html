@@ -1,0 +1,26 @@
+<div
+  class="modal fade"
+  id="AddUserModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="AddUserModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card card-plain">
+          <div class="card-header pb-0 text-left">
+            <h5 data-modal-title>Add New User</h5>
+            <p class="mb-0" data-modal-description>
+              Fill in the user’s details below to create a new account.
+            </p>
+          </div>
+          <div class="card-body">
+            {% include "admin/components/forms/add/add-user.html" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

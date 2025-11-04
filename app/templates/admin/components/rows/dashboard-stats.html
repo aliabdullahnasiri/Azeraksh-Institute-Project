@@ -1,0 +1,162 @@
+<div class="row px-2 gx-4">
+  <div class="col-xl-2 col-sm-4 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-2 ps-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="text-sm mb-0 text-capitalize">Total Employees</p>
+            <h4 class="mb-0">{{ Employee.count() }}</h4>
+          </div>
+          <div
+            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+          >
+            <i class="material-symbols-rounded opacity-10">person</i>
+          </div>
+        </div>
+      </div>
+      <hr class="horizontal my-0 light" />
+      <div class="card-footer p-2 ps-3">
+        <p class="mb-0 text-sm">
+          <span
+            class="text-{{ Employee.monthly_growth_clr() }} font-weight-bolder"
+            >{{ Employee.display_monthly_growth() }} </span
+          >than last month
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-sm-4 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-2 ps-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="text-sm mb-0 text-capitalize">Total Students</p>
+            <h4 class="mb-0">{{ Student.count() }}</h4>
+          </div>
+          <div
+            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+          >
+            <i class="material-symbols-rounded opacity-10">school</i>
+          </div>
+        </div>
+      </div>
+      <hr class="horizontal my-0 light" />
+      <div class="card-footer p-2 ps-3">
+        <p class="mb-0 text-sm">
+          <span
+            class="text-{{ Student.monthly_growth_clr() }} font-weight-bolder"
+            >{{ Student.display_monthly_growth() }} </span
+          >than last month
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-2 col-sm-4 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-2 ps-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="text-sm mb-0 text-capitalize">Total Teachers</p>
+            <h4 class="mb-0">{{ Teacher.count() }}</h4>
+          </div>
+          <div
+            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+          >
+            <i class="material-symbols-rounded opacity-10">person</i>
+          </div>
+        </div>
+      </div>
+      <hr class="horizontal my-0 light" />
+      <div class="card-footer p-2 ps-3">
+        <p class="mb-0 text-sm">
+          <span
+            class="text-{{ Teacher.monthly_growth_clr() }} font-weight-bolder"
+            >{{ Teacher.display_monthly_growth() }} </span
+          >than last month
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-2 col-sm-4 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-2 ps-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="text-sm mb-0 text-capitalize">Total Courses</p>
+            <h4 class="mb-0">{{ Course.count() }}</h4>
+          </div>
+          <div
+            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+          >
+            <i class="material-symbols-rounded opacity-10">menu_book</i>
+          </div>
+        </div>
+      </div>
+      <hr class="horizontal my-0 light" />
+      <div class="card-footer p-2 ps-3">
+        <p class="mb-0 text-sm">
+          <span
+            class="text-{{ Course.monthly_growth_clr() }} font-weight-bolder"
+            >{{ Course.display_monthly_growth() }} </span
+          >than last month
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-2 col-sm-4 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-2 ps-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="text-sm mb-0 text-capitalize">Enrollments</p>
+            <h4 class="mb-0">{{ Enrollment.count() }}</h4>
+          </div>
+          <div
+            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+          >
+            <i class="material-symbols-rounded opacity-10">how_to_reg</i>
+          </div>
+        </div>
+      </div>
+      <hr class="horizontal my-0 light" />
+      <div class="card-footer p-2 ps-3">
+        <p class="mb-0 text-sm">
+          <span
+            class="text-{{ Enrollment.monthly_growth_clr() }} font-weight-bolder"
+            >{{ Enrollment.display_monthly_growth() }} </span
+          >than last month
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-2 col-sm-4 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-header p-2 ps-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="text-sm mb-0 text-capitalize">Total Payments</p>
+            <h4 class="mb-0">{{ Payment.display_total() }}</h4>
+          </div>
+          <div
+            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg"
+          >
+            <i class="material-symbols-rounded opacity-10">payments</i>
+          </div>
+        </div>
+      </div>
+      <hr class="horizontal my-0 light" />
+      <div class="card-footer p-2 ps-3">
+        <p class="mb-0 text-sm">
+          <span
+            class="text-{{ Payment.monthly_growth_clr() }} font-weight-bolder"
+            >{{ Payment.display_monthly_growth() }} </span
+          >than last month
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

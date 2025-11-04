@@ -1,0 +1,42 @@
+{% block navbar %}
+<div class="container-fluid p-0">
+  <nav
+    class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5"
+  >
+    <a href="index.html" class="navbar-brand ml-lg-3">
+      <h3 class="m-0 text-uppercase text-primary text-small">
+        <i class="fa fa-book-reader mr-3"></i>{{ PROJECT_TITLE }}
+      </h3>
+    </a>
+    <div
+      class="collapse navbar-collapse justify-content-between px-lg-3"
+      id="navbarCollapse"
+    >
+      <div class="navbar-nav py-0 mx-auto">
+        <a href="{{ url_for('main.home') }}" class="nav-item nav-link">Home</a>
+        <a href="{{ url_for('main.about') }}" class="nav-item nav-link">About</a>
+        <a href="{{ url_for('main.courses') }}" class="nav-item nav-link">Courses</a>
+        <a href="{{ url_for('main.contact') }}" class="nav-item nav-link">Contact</a>
+      </div>
+    </div>
+    {% if not current_user.is_authenticated %}
+    <a href="{{ url_for('auth.login') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
+    {% else %}
+      {% if current_user.role.value == "admin" %}
+        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Dashboard</a>
+      {% else %}
+      <a href="#account" class="btn btn-primary py-2 px-4 d-none d-lg-block">My Account</a>
+      {% endif %}
+    {% endif %}
+
+    <button
+      type="button"
+      class="navbar-toggler"
+      data-toggle="collapse"
+      data-target="#navbarCollapse"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+{% endblock %}

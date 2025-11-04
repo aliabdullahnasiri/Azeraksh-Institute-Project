@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+      {% block title %}{{ title }} – {{ PROJECT_TITLE }}{% endblock %}
+    </title>
+
+    <!-- Favicon -->
+    {% if FAVICON_URL %}
+    <link href="{{ FAVICON_URL }}" rel="icon" />
+    {% endif %}
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='main/lib/owlcarousel/assets/owl.carousel.min.css') }}"
+      rel="stylesheet"
+    />
+
+    <link
+      href="{{ url_for('static', filename='main/css/style.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Topbar Start -->
+    {% include "main/components/topbar.html" %}
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    {% include "main/components/navbar.html" %}
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    {% include "main/components/header.html" %}
+    <!-- Header End -->
+
+    <!-- Content Start -->
+    {% block content %} {% endblock %}
+    <!-- Content End -->
+
+    <!-- Footer Start -->
+    {% include "main/components/footer.html" %}
+    <!-- Footer End -->
+    <script src="{{ url_for('static', filename='main/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='main/js/script.js') }}"></script>
+  </body>
+</html>
