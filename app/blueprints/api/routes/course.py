@@ -1,12 +1,15 @@
 import json
+import pathlib
 from typing import Dict, List, OrderedDict, Tuple, Union
 
-from flask import Response
+from flask import Response, request
 from flask_login import login_required
+from sqlalchemy import and_
 
 from app.extensions import db
 from app.forms.course import AddCourseForm, UpdateCourseForm
 from app.models.course import Course
+from app.models.file import CourseFile, File
 from app.types import ColumnID, ColumnName
 
 from .. import bp
@@ -153,6 +156,56 @@ def update_course() -> Response:
             course.end_time = form.end_time.data
             course.monthly_fee = form.monthly_fee.data
 
+            try:
+                links = request.form["links"]
+                links = json.loads(links)
+
+                if hasattr(links, "items"):
+                    for name, links in links.items():
+                        match name:
+                            case "banner":
+                                if links:
+                                    link = links.pop()
+
+                                    for f in course.files:
+                                        if f.file.file_for == name:
+                                            if f.file.file_url != link:
+                                                db.session.delete(f)
+                                                db.session.delete(f.file)
+
+                                    else:
+                                        db.session.commit()
+
+                                        if not File.query.filter_by(
+                                            file_url=link
+                                        ).first():
+                                            path: pathlib.Path = pathlib.Path(link)
+
+                                            file: File = File()
+
+                                            file.file_name = path.name
+                                            file.file_url = f"{path!s}"
+                                            file.file_for = name
+
+                                            db.session.add(file)
+                                            db.session.commit()
+
+                                            course_file: CourseFile = CourseFile()
+                                            course_file.file_id = file.file_id
+                                            course_file.course_id = course.course_id
+
+                                            db.session.add(course_file)
+                                            db.session.commit()
+
+                                else:
+                                    for f in course.files:
+                                        if f.file.file_for == name:
+                                            db.session.delete(f)
+                                            db.session.delete(f.file)
+
+            except Exception as e:
+                print(e)
+
             db.session.commit()
 
             response.response = json.dumps(
@@ -222,6 +275,36 @@ def add_course() -> Response:
 
         db.session.add(course)
         db.session.commit()
+
+        try:
+            links = request.form["links"]
+            links = json.loads(links)
+
+            if hasattr(links, "items"):
+                for name, links in links.items():
+                    match name:
+                        case "banner":
+                            link = links.pop()
+                            path: pathlib.Path = pathlib.Path(link)
+
+                            file: File = File()
+
+                            file.file_name = path.name
+                            file.file_url = f"{path!s}"
+                            file.file_for = name
+
+                            db.session.add(file)
+                            db.session.commit()
+
+                            course_file: CourseFile = CourseFile()
+                            course_file.file_id = file.file_id
+                            course_file.course_id = course.course_id
+
+                            db.session.add(course_file)
+                            db.session.commit()
+
+        except Exception as e:
+            print(e)
 
         dct = {}
 
