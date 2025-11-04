@@ -12,7 +12,7 @@ venv/
 
 
 # Flask-Migrate
-migrations/versions/__pycache__/
+migrations/
 
 # Flask
 app/static/
