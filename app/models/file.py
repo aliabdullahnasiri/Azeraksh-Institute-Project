@@ -1,9 +1,8 @@
 import pathlib
 from datetime import datetime, timezone
-from typing import Optional, Self, Union
+from typing import Optional, Self
 
 import humanize
-from flask import current_app
 
 from app.constants import APP_DIR
 from app.extensions import db
@@ -107,6 +106,26 @@ class TeacherFile(db.Model):
 
     def __repr__(self):
         return f"<TeachertFile ID={self.id} TeacherID={self.teacher_id} FileID={self.file_id}>"
+
+
+class CourseFile(db.Model):
+    __tablename__ = "course_files"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    course_id = db.Column(
+        db.Integer, db.ForeignKey("courses.course_id"), nullable=False
+    )
+    file_id = db.Column(
+        db.Integer, db.ForeignKey("files.file_id"), nullable=False, unique=True
+    )
+
+    file = db.relationship("File")
+    course = db.relationship("Course", back_populates="files")
+
+    def __repr__(self):
+        return (
+            f"<CourseFile ID={self.id} CourseID={self.course_id} FileID={self.file_id}>"
+        )
 
 
 class StudentFile(db.Model):
