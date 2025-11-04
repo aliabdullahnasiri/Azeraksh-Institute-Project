@@ -1,9 +1,11 @@
 import re
 
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileAllowed
 from wtforms import (
     DateField,
     DecimalField,
+    FileField,
     HiddenField,
     StringField,
     SubmitField,
@@ -34,6 +36,11 @@ class AddCourseForm(FlaskForm):
         "Monthly Fee",
         places=2,
         validators=[DataRequired(), NumberRange(min=0)],
+    )
+
+    banner = FileField(
+        "Upload the course banner",
+        validators=[FileAllowed(["jpg", "jpeg", "png"], "Images only!")],
     )
 
     def validate_teacher_id(self, teacher_id) -> None:
