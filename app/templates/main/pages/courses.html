@@ -1,1 +1,41 @@
-{% extends 'main/base.html' %}
+{% extends 'main/base.html' %} {% block content %}
+
+<div class="container py-5">
+  <div class="row mx-0 justify-content-center">
+    <div class="col-lg-8">
+      <div class="section-title text-center position-relative mb-5">
+        <h6
+          class="d-inline-block position-relative text-secondary text-uppercase pb-2"
+        >
+          Our Courses
+        </h6>
+        <h1 class="display-4">Checkout New Releases Of Our Courses</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    {% for c in courses %}
+    <div class="col-lg-4 col-md-6 pb-4">
+      <a
+        class="courses-list-item position-relative d-block overflow-hidden mb-2 rounded-3"
+      >
+        <img class="img-fluid" src="{{ c.banner.file_url }}" alt="" />
+        <div class="courses-text">
+          <h4 class="text-center text-white px-3">{{ c.course_title }}</h4>
+          <div class="border-top w-100 mt-3">
+            <div class="d-flex justify-content-between p-4">
+              <span class="text-white"
+                ><i class="fa fa-user mr-2"></i>{{ c.teacher.full_name }}</span
+              >
+              <span class="text-white"
+                >{{ CURRENCY_SYMBOL }}{{ c.monthly_fee }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
