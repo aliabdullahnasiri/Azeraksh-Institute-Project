@@ -1,8 +1,11 @@
 from typing import Any, Dict
 
+from sqlalchemy import and_
+
 from app.constants import CURRENCY_SYMBOL
 from app.extensions import db
 from app.models.enrollment import EnrollmentStatus
+from app.models.file import CourseFile, File
 
 
 class Course(db.Model):
@@ -136,3 +139,8 @@ class Course(db.Model):
             "created_at": self.display_created_at,
             "updated_at": self.display_updated_at,
         }
+
+    @property
+    def banner(self):
+        if files := [f for f in self.files if f.file.file_for == "banner"]:
+            return files.pop().file
