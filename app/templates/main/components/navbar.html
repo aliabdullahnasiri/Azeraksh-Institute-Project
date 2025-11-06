@@ -23,9 +23,9 @@
     <a href="{{ url_for('auth.login') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
     {% else %}
       {% if current_user.role.value == "admin" %}
-        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Dashboard</a>
+        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block rounded-3">Dashboard</a>
       {% else %}
-      <a href="#account" class="btn btn-primary py-2 px-4 d-none d-lg-block">My Account</a>
+      <a href="#account" class="btn btn-primary py-2 px-4 d-none d-lg-block rounded-3">My Account</a>
       {% endif %}
     {% endif %}
 
