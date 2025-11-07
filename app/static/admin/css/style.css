@@ -1,0 +1,167 @@
+.avatar img {
+  background: #6e83b7 !important;
+}
+
+body.dark-version div.modal-content {
+  background-color: transparent !important;
+}
+
+td {
+  padding: 0.75rem 1.5rem !important;
+}
+
+td.checkbox-td {
+  padding: 0px !important;
+  padding-left: 2rem !important;
+}
+
+/* animations */
+@keyframes add-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes delete-slide-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-18px);
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
+}
+
+@keyframes pulse-edit {
+  0% {
+    background: linear-gradient(
+      90deg,
+      rgba(6, 182, 212, 0.06),
+      rgba(255, 255, 255, 0)
+    );
+  }
+  50% {
+    background: linear-gradient(
+      90deg,
+      rgba(6, 182, 212, 0.12),
+      rgba(255, 255, 255, 0)
+    );
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+.row-added {
+  animation: add-slide-in 0.22s ease both;
+}
+
+.row-deleting {
+  animation: delete-slide-out 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.row-editing {
+  animation: pulse-edit 0.9s ease 2;
+}
+
+.empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.avatar {
+  width: 240px !important;
+  height: 240px !important;
+}
+
+.avatar img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+form .errors {
+  display: grid;
+  padding: 5px;
+}
+
+.drag-over-effect::after {
+  content: "\2193";
+  font-size: 4rem;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--bs-card-border-radius);
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  background: #202020;
+  opacity: 0.8;
+}
+
+.drag-over-effect.avatar::after {
+  border-radius: 100%;
+}
+
+.drop-zone button.delete-item {
+  width: 32px;
+  height: 32px;
+}
+
+.drop-zone .list-section ul li.card {
+  transition: 0.32s;
+}
+
+.drop-zone .list-section ul li.card:hover {
+  transform: translateY(-8px);
+  transition: 0.32s;
+}
+
+.list-section:not(:has(ul li)) + .drop-zone hr {
+  display: none !important;
+}
+
+.list-section:not(:has(ul li)) {
+  display: none;
+}
+
+.file-card {
+  transition: 0.32s;
+}
+
+.file-card:hover {
+  transform: translateY(-8px);
+  transition: 0.32s;
+}
+
+.file-card span.file-ext {
+  line-height: 20px;
+}
+
+.suggestions:not(:has(ul li)) {
+  display: none !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .card .table-control {
+    display: none !important;
+  }
+}
