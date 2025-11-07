@@ -15,7 +15,7 @@ venv/
 migrations/
 
 # Flask
-app/static/
+app/static/uploads
 
 # IDE
 .vscode/
