@@ -1,13 +1,19 @@
+import random
 from datetime import datetime, timedelta, timezone
 
 from numerize import numerize
-from sqlalchemy import extract, func
+from sqlalchemy import Column, Integer, String, event, extract, func
+from sqlalchemy.ext.declarative import as_declarative, declared_attr
 
 from app.extensions import db
 
 
 class Base(db.Model):
     __abstract__ = True
+
+    @declared_attr
+    def uid(cls):
+        return Column(String(8), unique=True, nullable=False)
 
     # Timestamps
     created_at = db.Column(
@@ -108,6 +114,13 @@ class Base(db.Model):
     @classmethod
     def count(cls):
         return numerize.numerize(cls.query.count(), 2)
+
+
+@event.listens_for(Base, "before_insert", propagate=True)
+def generate_uid(mapper, connection, target):
+    prefix = target.__class__.__name__[0].upper()  # First letter of class name
+    random_number = random.randint(100000, 999999)
+    target.uid = f"{prefix}-{random_number}"
 
 
 db.Model = Base
