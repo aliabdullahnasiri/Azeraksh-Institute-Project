@@ -56,7 +56,7 @@ class Employee(db.Model):
             "age": self.age,
             "avatar": self.avatar_path,
             "address": self.address,
-            "salary": f"{self.salary:.2f}",
+            "salary": f"{self.salary:.2f}" if self.salary else None,
             "hire_date": self.display_hire_date,
             "created_at": self.display_created_at,
             "updated_at": self.display_updated_at,
