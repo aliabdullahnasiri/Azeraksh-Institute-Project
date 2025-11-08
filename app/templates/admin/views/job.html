@@ -135,7 +135,7 @@
   </div>
   <div class="row gx-3 my-1">
     <div class="col-md-12">
-      {% with employees = job.employees %}
+      {% with employees = job.employees %} {% if employees %}
       <div class="row gx-0 mb-2 mt-5">
         <div class="card">
           <div
@@ -192,10 +192,7 @@
                           />
                         </div>
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">
-                            {{ e.first_name }} {{ e.middle_name }} {{
-                            e.last_name }}
-                          </h6>
+                          <h6 class="mb-0 text-sm">{{ e.full_name }}</h6>
                           <p class="text-xs text-secondary mb-0">
                             {{ e.email }}
                           </p>
@@ -223,7 +220,7 @@
           </div>
         </div>
       </div>
-      {% endwith %}
+      {% endif %} {% endwith %}
     </div>
   </div>
 </div>
